@@ -11,7 +11,7 @@ const SignIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email === 'unofeeds@galaxeye.blue' && password === 'unofeeds@blue#1') {
+    if (email === 'Sirilivefish@galaxeye.space' && password === 'sirilivefish@blue#1') {
       login();
     } else {
       setError('Invalid email or password');
