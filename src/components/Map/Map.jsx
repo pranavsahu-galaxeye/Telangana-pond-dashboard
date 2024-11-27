@@ -117,7 +117,7 @@ const MapComponent = () => {
   useEffect(() => {
     const promises = [
       fetch("/telangana_districts.geojson"),
-      fetch("/telangana_ponds_final_cleaned.geojson"),
+      fetch("/telangana_ponds_final_updated.geojson"),
     ];
 
     Promise.all(promises).then(async (result) => {
@@ -160,7 +160,7 @@ const MapComponent = () => {
         longitude,
         latitude,
         state: feature.properties.STATE || "N/A",
-        subdistrict: feature.properties.SUBDISTRICT || "N/A",
+        subdistrict: feature.properties.SUB_DISTRICT || "N/A",
         district: feature.properties.DISTRICT || "N/A",
         village: feature.properties.VILLAGE || "N/A",
         coordinates: formatCoordinates(longitude, latitude),
@@ -198,7 +198,7 @@ const MapComponent = () => {
         longitude,
         latitude,
         state: feature.properties.STATE || "N/A",
-        subdistrict: feature.properties.SUBDISTRICT || "N/A",
+        subdistrict: feature.properties.SUB_DISTRICT || "N/A",
         district: feature.properties.DISTRICT || "N/A",
         village: feature.properties.VILLAGE || "N/A",
         coordinates: formatCoordinates(longitude, latitude),

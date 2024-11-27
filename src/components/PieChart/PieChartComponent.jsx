@@ -6,7 +6,7 @@ const ListComponent = ({ toggle }) => {
 
   useEffect(() => {
     // Fetch BIHAR_PONDS_MERGED GeoJSON data
-    fetch('/telangana_ponds_final_cleaned.geojson')
+    fetch('/telangana_ponds_final_updated.geojson')
       .then((response) => response.json())
       .then((data) => {
         const districtCounts = {}; // To store pond counts
