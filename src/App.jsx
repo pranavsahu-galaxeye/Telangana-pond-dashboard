@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const fetchGeojson = async () => {
       try {
-        const response = await fetch('/FINAL_TELANGANA_PONDS_MAPPED.geojson');
+        const response = await fetch('/FINAL_TELANGANA_PONDS_MAPPED_2.geojson');
         if (!response.ok) {
           throw new Error(`Failed to fetch GeoJSON data: ${response.statusText}`);
         }

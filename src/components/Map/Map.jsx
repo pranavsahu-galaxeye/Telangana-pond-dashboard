@@ -117,7 +117,7 @@ const MapComponent = () => {
   useEffect(() => {
     const promises = [
       fetch("/telangana_districts.geojson"),
-      fetch("/FINAL_TELANGANA_PONDS_MAPPED.geojson"),
+      fetch("/FINAL_TELANGANA_PONDS_MAPPED_2.geojson"),
     ];
 
     Promise.all(promises).then(async (result) => {
