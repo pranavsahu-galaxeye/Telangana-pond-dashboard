@@ -19,14 +19,14 @@ const Sidebar = () => {
   useEffect(() => {
     const fetchGeoJsonData = async () => {
       try {
-        const response = await fetch('/telangana_ponds_final_updated.geojson');
+        const response = await fetch('/FINAL_TELANGANA_PONDS_MAPPED.geojson');
         if (!response.ok) {
           throw new Error(`Failed to fetch GeoJSON: ${response.statusText}`);
         }
         const geoJson = await response.json();
         const totalPonds = geoJson.features.length;
         const totalArea = geoJson.features.reduce((sum, feature) => {
-          const area = feature.properties.AREA || 0; // Use 0 if AREA is undefined
+          const area = feature.properties.AREA_ha || 0; // Use 0 if AREA is undefined
           return sum + area;
         }, 0);
 

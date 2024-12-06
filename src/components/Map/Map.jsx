@@ -117,7 +117,7 @@ const MapComponent = () => {
   useEffect(() => {
     const promises = [
       fetch("/telangana_districts.geojson"),
-      fetch("/telangana_ponds_final_updated.geojson"),
+      fetch("/FINAL_TELANGANA_PONDS_MAPPED.geojson"),
     ];
 
     Promise.all(promises).then(async (result) => {
@@ -152,7 +152,7 @@ const MapComponent = () => {
       setHoverInfo({
         longitude,
         latitude,
-        area: formatArea(feature.properties.sum_area) || "N/A",
+        area: formatArea(feature.properties.sum_area || 0),
         isCluster: true,
       });
     } else {
@@ -160,11 +160,11 @@ const MapComponent = () => {
         longitude,
         latitude,
         state: feature.properties.STATE || "N/A",
-        subdistrict: feature.properties.SUB_DISTRICT || "N/A",
+        subdistrict: feature.properties.SUBDISTRICT || "N/A",
         district: feature.properties.DISTRICT || "N/A",
         village: feature.properties.VILLAGE || "N/A",
         coordinates: formatCoordinates(longitude, latitude),
-        area: formatArea(feature.properties.AREA) || "N/A",
+        area: formatArea(feature.properties.AREA_ha || 0),
         isCluster: false,
       });
     }
@@ -183,26 +183,28 @@ const MapComponent = () => {
     const feature = features[0];
     const [longitude, latitude] = feature.geometry.coordinates;
 
-    const clusterId = feature.properties.cluster_id;
-    const mapSource = event.target.getSource("ponds");
+    if (feature.layer.id === "clusters") {
+      const clusterId = feature.properties.cluster_id;
+      const mapSource = event.target.getSource("ponds");
 
-    if (clusterId) {
-      mapSource.getClusterExpansionZoom(clusterId).then((zoom) => {
-        event.target.easeTo({
-          center: feature.geometry.coordinates,
-          zoom,
+      if (clusterId) {
+        mapSource.getClusterExpansionZoom(clusterId).then((zoom) => {
+          event.target.easeTo({
+            center: feature.geometry.coordinates,
+            zoom,
+          });
         });
-      });
+      }
     } else {
       setPopupInfo({
         longitude,
         latitude,
         state: feature.properties.STATE || "N/A",
-        subdistrict: feature.properties.SUB_DISTRICT || "N/A",
+        subdistrict: feature.properties.SUBDISTRICT || "N/A",
         district: feature.properties.DISTRICT || "N/A",
         village: feature.properties.VILLAGE || "N/A",
         coordinates: formatCoordinates(longitude, latitude),
-        area: formatArea(feature.properties.AREA) || "N/A",
+        area: formatArea(feature.properties.AREA_ha || 0),
       });
     }
   };
@@ -267,7 +269,7 @@ const MapComponent = () => {
               clusterMaxZoom={14}
               clusterRadius={50}
               clusterProperties={{
-                sum_area: ["+", ["get", "AREA"]],
+                sum_area: ["+", ["get", "AREA_ha"]],
               }}
             >
               <Layer {...clusterLayer} />
@@ -288,9 +290,9 @@ const MapComponent = () => {
             >
               <div>
                 {hoverInfo.isCluster ? (
-                  <p>Area: {hoverInfo.area}</p>
+                  <p>Total Area: {hoverInfo.area}</p>
                 ) : (
-                  <div>
+                  <>
                     <p>State: {hoverInfo.state}</p>
                     <p>Subdistrict: {hoverInfo.subdistrict}</p>
                     <p>District: {hoverInfo.district}</p>
@@ -308,7 +310,7 @@ const MapComponent = () => {
                     >
                       Open in Google Maps
                     </button>
-                  </div>
+                  </>
                 )}
               </div>
             </Popup>
