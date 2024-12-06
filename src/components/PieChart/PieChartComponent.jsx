@@ -14,7 +14,7 @@ const ListComponent = ({ toggle }) => {
 
         data.features.forEach((feature) => {
           const district = feature.properties.DISTRICT || 'Unknown';
-          const area = feature.properties.AREA || 0; // Ensure AREA is numeric
+          const area = feature.properties.AREA_ha || 0; // Ensure AREA is numeric
 
           districtCounts[district] = (districtCounts[district] || 0) + 1;
           districtAreas[district] = (districtAreas[district] || 0) + area;
