@@ -45,7 +45,7 @@ const Sidebar = () => {
   return (
     <div
       className={`absolute right-0 top-[90px] bottom-[10px] flex items-center justify-end rounded-[16px] pr-[12px] ${
-        openSideBox ? 'w-full max-w-[350px]' : 'w-[40px]'
+        openSideBox ? "w-full max-w-[350px]" : "w-[40px]"
       }`}
     >
       <button
@@ -56,10 +56,21 @@ const Sidebar = () => {
         <ArrowBackIosNewIcon fontSize="small" />
       </button>
 
-      <Slide direction="left" in={openSideBox} mountOnEnter unmountOnExit>
+      <Slide
+       
+        direction="left"
+        in={openSideBox}
+        mountOnEnter
+        unmountOnExit
+      >
         <Box
           component="div"
-          className="flex flex-col items-center w-full max-w-[350px] p-2.5 rounded-[15px] relative h-full z-[1000] text-[#f2f2f2] bg-gradient-to-r from-[#121212] to-[#053C3A]"
+          className={`flex flex-col items-center w-full max-w-[350px] p-2.5 rounded-[15px] relative h-full z-[1000] text-[#f2f2f2] bg-gradient-to-r from-[#121212] to-[#053C3A]`}
+          style={{
+           
+            opacity: openSideBox ? 1 : 0,
+          
+          }}
         >
           <div className="flex items-center justify-center w-full mb-2">
             <button
@@ -87,21 +98,25 @@ const Sidebar = () => {
             </h1>
             <div className="flex justify-center mb-3">
               <button
-                onClick={() => setToggle('ponds')}
+                onClick={() => setToggle("ponds")}
                 className={`${
-                  toggle === 'ponds' ? 'bg-[#14DFAF] text-white' : 'bg-transparent text-white'
+                  toggle === "ponds"
+                    ? "bg-[#14DFAF] text-white"
+                    : "bg-transparent text-white"
                 } rounded-[12px] text-sm w-[80px] h-[35px] mr-1 flex items-center justify-center border transition-all duration-300 ${
-                  toggle !== 'ponds' ? 'border-transparent' : 'border-[#14DFAF]'
+                  toggle !== "ponds" ? "border-transparent" : "border-[#14DFAF]"
                 } hover:bg-[#14DFAF] hover:text-white hover:border-[#14DFAF]`}
               >
                 PONDS
               </button>
               <button
-                onClick={() => setToggle('area')}
+                onClick={() => setToggle("area")}
                 className={`${
-                  toggle === 'area' ? 'bg-[#14DFAF] text-white' : 'bg-transparent text-white'
+                  toggle === "area"
+                    ? "bg-[#14DFAF] text-white"
+                    : "bg-transparent text-white"
                 } rounded-[12px] text-sm w-[80px] h-[35px] flex items-center justify-center border transition-all duration-300 ${
-                  toggle !== 'area' ? 'border-transparent' : 'border-[#14DFAF]'
+                  toggle !== "area" ? "border-transparent" : "border-[#14DFAF]"
                 } hover:bg-[#14DFAF] hover:text-white hover:border-[#14DFAF]`}
               >
                 AREA

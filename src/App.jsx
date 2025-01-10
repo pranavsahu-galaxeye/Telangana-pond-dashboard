@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Map from "./components/Map/Map";
+import Map from "./components/Map/MapComponent";
 import Sidebar from "./components/Sidebar/Sidebar";
 import SignIn from "./components/Authentication/SignIn";
 import {
@@ -72,7 +72,7 @@ const Dashboard = ({ geojsonData }) => {
           {" "}
         </div>
         <button
-          className="bg-transparent text-white  px-5 py-2 rounded-full text-sm ml-auto hover:bg-[#14DFAF] transition duration-300"
+          className="bg-transparent text-white  px-7 py-2 rounded-full text-sm ml-auto hover:bg-[#14DFAF] transition duration-300"
           onClick={handleLogout}
         >
           Logout 
