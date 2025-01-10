@@ -95,16 +95,7 @@ function MapGeocoder() {
 			)}
 			<div
 				id="geocoder"//Geocoder div for search input
-				style={{
-					position: "absolute",
-					top: "90px",
-					left: "16px",
-					// marginLeft: "20px",
-					marginTop: "10px",
-					display: "block",
-					width: "100%",
-					maxWidth: "300px",
-				}}
+				className="absolute top-[90px] left-4 mt-2 block w-full max-w-[300px]"
 			></div>
 		</>
 	);

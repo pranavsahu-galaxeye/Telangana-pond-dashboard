@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Map, { Source, Layer, Popup } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import "./MapComponent.css";
+
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import MapGeocoder from "./MapGeocoder";
@@ -219,20 +219,7 @@ const MapComponent = () => {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       {isLoading && (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(255, 255, 255, 0.7)",
-            zIndex: 1000,
-          }}
-        >
+        <Box className="flex justify-center items-center absolute top-0 left-0 w-full h-full bg-white bg-opacity-70 z-50">
           <CircularProgress />
         </Box>
       )}
@@ -241,7 +228,7 @@ const MapComponent = () => {
           initialViewState={{
             longitude: 78.9629,
             latitude: 20.5937,
-            zoom: 4,
+            zoom: 3,
           }}
           style={{ width: "100%", height: "100%" }}
           mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${
@@ -300,7 +287,19 @@ const MapComponent = () => {
                     <p>Coordinates: {hoverInfo.coordinates}</p>
                     <p>Area: {hoverInfo.area}</p>
                     <button
-                      className="redirect-button"
+                      className="  bg-blue-500 
+    text-white 
+    py-2 
+    px-4 
+    rounded-md 
+    shadow-lg 
+    hover:bg-blue-700 
+    hover:-translate-y-0.5 
+    transform 
+    transition-all 
+    duration-300 
+    text-sm
+  "
                       onClick={() =>
                         handleGoogleMapsRedirect(
                           hoverInfo.longitude,
@@ -333,7 +332,19 @@ const MapComponent = () => {
                 <p>Coordinates: {popupInfo.coordinates}</p>
                 <p>Area: {popupInfo.area}</p>
                 <button
-                  className="redirect-button"
+                  className="  bg-blue-500 
+    text-white 
+    py-2 
+    px-4 
+    rounded-md 
+    shadow-lg 
+    hover:bg-blue-700 
+    hover:-translate-y-0.5 
+    transform 
+    transition-all 
+    duration-300 
+    text-sm
+  "
                   onClick={() =>
                     handleGoogleMapsRedirect(
                       popupInfo.longitude,
